@@ -2,7 +2,7 @@
   "name": "Financial Transactions",
   "version": "1.0.0",
   "description": "A simple financial transactions API",
-  "main": "index.js",
+  "main": "server.js",
   "keywords": [
     "node",
     "express",
@@ -12,6 +12,9 @@
   ],
   "author": "Osman Kartal",
   "license": "ISC",
+  "scripts": {
+    "start": "node src/server.js"
+  },
   "dependencies": {
     "date-fns": "^3.0.6",
     "dotenv": "^16.3.1",
