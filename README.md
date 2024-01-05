@@ -17,11 +17,11 @@ This project uses the following environment variables:
 # Getting started
 - Clone the repository
 ```
-git clone  <git lab template url> <project_name>
+git clone https://github.com/okkartal/node-ft.git
 ```
 - Install dependencies
 ```
-cd <project_name>
+cd src
 npm install
 ```
 - Build and run the project
