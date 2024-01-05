@@ -78,21 +78,19 @@ exports.depositFunds = function (req, res) {
 }
 
 exports.withdrawFunds = function (req, res) {
-
     const { amount, accountId } = req.body;
 
     if (!amount || !accountId) {
         res.status(400).send('Please provide amount and accountId');
     }
 
-    Account.findOne({ _id: accountId })
-    .then((account) => { 
-
+    Account.findOne({ _id: accountId }).then((account) => { 
         if(amount > account.balance) {
             res.status(400).send('Insufficient funds');
         }
 
         const newBalance =  account.balance - amount;
+       
         Account.updateOne({ _id: accountId }, { $set: { balance: newBalance } })
         .then(() => { 
             const transaction = new Transaction({

@@ -1,4 +1,17 @@
 {
+  "name": "Financial Transactions",
+  "version": "1.0.0",
+  "description": "A simple financial transactions API",
+  "main": "index.js",
+  "keywords": [
+    "node",
+    "express",
+    "mongoose",
+    "financial",
+    "transactions"
+  ],
+  "author": "Osman Kartal",
+  "license": "ISC",
   "dependencies": {
     "date-fns": "^3.0.6",
     "dotenv": "^16.3.1",

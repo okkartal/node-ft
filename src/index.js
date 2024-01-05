@@ -1,6 +1,6 @@
 const express = require('express'),
     app = express(),
-    port = process.env.APP_PORT || 3001,
+    port = process.env.APP_PORT || 3000,
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     errorHandler = require('./middlewares/errorHandler'),
