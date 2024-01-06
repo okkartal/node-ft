@@ -4,7 +4,11 @@ const express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     errorHandler = require('./middlewares/errorHandler'),
-    verifyApiKey = require("./middlewares/apiKeyAuth");
+    verifyApiKey = require("./middlewares/apiKeyAuth"),
+    swaggerDocs = require('./swagger');
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger_output.json');
 
   // mongoose connection
   const connectDB = require('./config/dbConnection');
@@ -18,8 +22,10 @@ const express = require('express'),
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(verifyApiKey);
-app.use(errorHandler);
+ // Swagger Page
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use('/', require('./routes/apiRoutes'));
+app.use(errorHandler);
 
 mongoose.connection.once('open', () => {
     app.listen(port, () => {

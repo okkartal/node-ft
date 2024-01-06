@@ -1,25 +1,25 @@
-const { TransactionSchema} = require('../models/transactionModel');
-const { AccountSchema} = require('../models/accountModel');
-const { UserSchema} = require('../models/userModel');
+const { TransactionSchema } = require('../models/transactionModel');
+const { AccountSchema } = require('../models/accountModel');
+const { UserSchema } = require('../models/userModel');
 
 var mongoose = require('mongoose'),
     Transaction = mongoose.model('Transactions', TransactionSchema),
     Account = mongoose.model('Accounts', AccountSchema),
     User = mongoose.model('Users', UserSchema);
 
-exports.users = function (req, res) {
+ function users(req, res) {
     User.find({})
     .then((users) => {  res.status(200).json(users)})
     .catch((err) => { res.status(400).json(err)});
 }
 
-exports.accounts = function (req, res) {
+function accounts (req, res) {
     Account.find({})
     .then((accounts) => {  res.status(200).json(accounts)})
     .catch((err) => { res.status(400).json(err)});
 }
 
-exports.transactions = function (req, res) {
+  function transactions(req, res) {
 
     const {
         accountId
@@ -35,7 +35,7 @@ exports.transactions = function (req, res) {
     .catch((err) => { res.status(400).json(err)}); 
 }
 
-exports.accountBalance = function (req, res) {
+function accountBalance(req, res) {
     const { userId } = req.params;
 
     if (!userId) {
@@ -49,7 +49,7 @@ exports.accountBalance = function (req, res) {
     .catch((err) => { res.status(400).json(err)});
 }
 
-exports.depositFunds = function (req, res) {
+function depositFunds(req, res) {
     const { amount, accountId } = req.body;
 
     if (!amount || !accountId) {
@@ -77,7 +77,7 @@ exports.depositFunds = function (req, res) {
     .catch(err => res.status(400).json(err)); 
 }
 
-exports.withdrawFunds = function (req, res) {
+function withdrawFunds(req, res) {
     const { amount, accountId } = req.body;
 
     if (!amount || !accountId) {
@@ -104,3 +104,5 @@ exports.withdrawFunds = function (req, res) {
     })
     .catch(err => res.status(400).json(err));
 }
+
+module.exports = { users, accounts, transactions, accountBalance, depositFunds, withdrawFunds }
