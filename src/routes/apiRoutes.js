@@ -1,13 +1,15 @@
-const { 
-    users,
-    accounts,
+const {  
+    users, 
+    accounts, 
     transactions, 
-    accountBalance,
+    accountBalance, 
     depositFunds, 
-    withdrawFunds,  
+    withdrawFunds 
      } = require("../controllers/apiController");
+     
 const router = require("express").Router();
 
+router.get('/api', users);
 router.get('/api/users', users);
 router.get('/api/accounts', accounts);
 router.get('/api/transactions/:accountId', transactions);

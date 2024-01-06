@@ -30,5 +30,10 @@ npm start
 ```
   Navigate to `http://localhost:3000`
 
+
 - API Document endpoints
-- You can test endpoints directly by importing the file in the postman collection directory into postman.
+1. With Postman: 
+   You can test endpoints directly by importing the file in the postman collection directory into postman.
+
+2.With Swagger:
+  Navigate to `http://localhost:3000/docs` 
